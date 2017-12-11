@@ -1,4 +1,4 @@
-package com.njqg.orchard.library_core.net;
+package com.hans.hc.hanscore.libpack;
 
 import com.njqg.orchard.library_core.utils.Constant;
 
@@ -6,10 +6,6 @@ import com.njqg.orchard.library_core.utils.Constant;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -21,6 +17,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * date: 2017/11/23 17:17.
  * e-mail: hxxx1992@163.com
  * wiki： RetrofitManager.getInstance().create(***.class).
+ *
+ * 复制此类到新建APP项目内，自定义baseurl以及构造中需要的参数，
+ *
  */
 
 public class RetrofitManager {
@@ -77,11 +76,11 @@ public class RetrofitManager {
     }
 
 
-    public <T> void toSubscribe(Observable<T> o, Observer<T> s) {
+   /* public <T> void toSubscribe(Observable<T> o, Observer<T> s) {
         o.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(s);
-    }
+    }*/
 
 }
