@@ -1,45 +1,38 @@
 package com.njqg.orchard.library_core.base;
 
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+
 /**
  * Fragment 延迟加载
  */
 public abstract class BaseLibLazyFragment extends BaseRxFragment {
 
-    /**
-     * Fragment当前状态是否可见
-     */
-    protected boolean isVisible;
+    protected boolean mIsViewInitiated;
+    protected boolean mIsVisibleToUser;
+    protected boolean mIsDataInitiated;
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        mIsVisibleToUser = isVisibleToUser;
+        initFetchData();
+    }
 
-        if (getUserVisibleHint()) {
-            isVisible = true;
-            onVisible();
-        } else {
-            isVisible = false;
-            onInvisible();
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mIsViewInitiated = true;
+        initFetchData();
+    }
+
+    private void initFetchData() {
+        if (mIsVisibleToUser && mIsViewInitiated && !mIsDataInitiated) {
+            fetchData();
+            mIsDataInitiated = true;
         }
     }
 
-    /**
-     * 可见
-     */
-    protected void onVisible() {
-        lazyLoad();
-    }
-
-    /**
-     * 不可见
-     */
-    protected void onInvisible() {
-
-    }
-
-    /**
-     * 延迟加载 子类必须重写此方法
-     */
-    protected abstract void lazyLoad();
+    protected abstract void fetchData();
 }
