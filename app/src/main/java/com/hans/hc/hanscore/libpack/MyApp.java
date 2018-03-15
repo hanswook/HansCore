@@ -11,4 +11,9 @@ import com.njqg.orchard.library_core.base.BaseApp;
 
 public class MyApp extends BaseApp {
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        DataBaseHelper.getInstance().setDatabase();
+    }
 }
