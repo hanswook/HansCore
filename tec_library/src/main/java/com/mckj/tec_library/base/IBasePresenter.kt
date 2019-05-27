@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference
  * @create 2019/5/15
  * @description
  */
-interface IBasePresenter<V> {
+interface IBasePresenter<V : BaseView> {
 
     fun attachModelView(pView: V, context: Context?)
 

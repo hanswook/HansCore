@@ -17,7 +17,7 @@ import org.greenrobot.eventbus.EventBus
  */
 
 
-abstract class BaseDialogFragment<V, T : IBasePresenter<V>> : DialogFragment(), BaseView {
+abstract class BaseDialogFragment<V:BaseView, T : IBasePresenter<V>> : DialogFragment(), BaseView {
 
     private var disposables2Stop: CompositeDisposable? = null// 管理Stop取消订阅者者
     private var disposables2Destroy: CompositeDisposable? = null// 管理Destroy取消订阅者者

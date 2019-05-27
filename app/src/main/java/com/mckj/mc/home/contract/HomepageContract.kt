@@ -13,6 +13,13 @@ interface HomepageContract {
 
     interface Presenter : IBasePresenter<View> {
 
+        fun one()
+
+
+        fun two()
+
+        fun three()
+
     }
 
     interface View : BaseView {

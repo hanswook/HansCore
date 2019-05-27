@@ -13,6 +13,10 @@ interface HomeFragmentContract {
 
     interface Presenter : IBasePresenter<View> {
 
+        fun one()
+
+        fun two()
+
     }
 
     interface View : BaseView {

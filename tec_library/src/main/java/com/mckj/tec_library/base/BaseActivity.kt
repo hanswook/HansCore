@@ -17,9 +17,9 @@ import com.mckj.tec_library.utils.statusbar.StatusBarUtil
  * @create 2019/5/15
  * @description
  */
-abstract class BaseActivity<V, T : IBasePresenter<V>> : BaseRxActivity(), BaseView {
+abstract class BaseActivity : BaseRxActivity(), BaseView {
 
-    protected var mPresenter: T? = null
+    protected var mPresenters: ArrayList<IBasePresenter<BaseView>> = ArrayList<IBasePresenter<BaseView>>()
     protected var mActivity: AppCompatActivity? = null
 
     private var dialogManager: LoadingDialogManager? = null
@@ -74,9 +74,11 @@ abstract class BaseActivity<V, T : IBasePresenter<V>> : BaseRxActivity(), BaseVi
             EventBusUtils.register(this)
         }
 
-        mPresenter = createPresenter()
-        if (mPresenter != null) {
-            mPresenter!!.attachModelView(this as V, this)
+        addPresenter()
+        if (mPresenters.isNotEmpty()) {
+            for (presenter in mPresenters) {
+                presenter.attachModelView(this, this)
+            }
         }
         dialogManager = LoadingDialogManager(this)
         mActivity = this
@@ -91,13 +93,19 @@ abstract class BaseActivity<V, T : IBasePresenter<V>> : BaseRxActivity(), BaseVi
      *
      * @return
      */
-    protected abstract fun createPresenter(): T
+    protected abstract fun addPresenter()
+
+    protected fun <V : BaseView, P : IBasePresenter<V>> addToPresenters(child: P) {
+        mPresenters.add(child as IBasePresenter<BaseView>)
+    }
 
 
     override fun onDestroy() {
         super.onDestroy()
-        if (mPresenter != null) {
-            mPresenter!!.onDettach()
+        if (mPresenters.isNotEmpty()) {
+            for (presenter in mPresenters) {
+                presenter.onDettach()
+            }
         }
         if (isRegisterEventBus() && EventBusUtils.isRegistered(this)) {
             EventBusUtils.unRegister(this)

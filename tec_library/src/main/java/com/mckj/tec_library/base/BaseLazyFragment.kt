@@ -9,7 +9,7 @@ import android.view.View
  * @description
  */
 
-abstract class BaseLazyFragment<V, T : IBasePresenter<V>> : BaseFragment<V, T>() {
+abstract class BaseLazyFragment<V:BaseView, T : IBasePresenter<V>> : BaseFragment<V, T>() {
 
     protected var mIsViewInitiated: Boolean = false
     protected var mIsVisibleToUser: Boolean = false

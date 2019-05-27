@@ -10,7 +10,7 @@ import java.lang.ref.WeakReference
  * @description
  */
 
-abstract class BasePresenter<V> : IBasePresenter<V> {
+abstract class BasePresenter<V : BaseView> : IBasePresenter<V> {
     var mViewRef: WeakReference<V>? = null
     protected var mContextRef: Reference<Context>? = null
 

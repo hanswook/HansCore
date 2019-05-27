@@ -9,12 +9,18 @@ import com.mckj.mc.home.contract.HomepageContract
 import com.mckj.mc.home.fragment.HomeFragment
 import com.mckj.mc.home.presenter.HomepagePresenter
 import com.mckj.tec_library.base.BaseActivity
+import com.mckj.tec_library.base.BaseView
+import com.mckj.tec_library.base.IBasePresenter
 import kotlinx.android.synthetic.main.home_activity_homepage.*
 
-class HomepageActivity : BaseActivity<HomepageContract.View, HomepageContract.Presenter>(), HomepageContract {
+class HomepageActivity : BaseActivity(), HomepageContract {
 
     override val layoutId = R.layout.home_activity_homepage
-    override fun createPresenter(): HomepageContract.Presenter = HomepagePresenter()
+    private val homepagePresenter by lazy { HomepagePresenter() }
+
+    override fun addPresenter() {
+        addToPresenters(homepagePresenter)
+    }
 
 
     companion object {
@@ -34,6 +40,11 @@ class HomepageActivity : BaseActivity<HomepageContract.View, HomepageContract.Pr
 
         initViewPager()
 
+        homepagePresenter.one()
+
+        homepagePresenter.three()
+
+        homepagePresenter.two()
     }
 
 

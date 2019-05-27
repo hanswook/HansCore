@@ -14,7 +14,7 @@ import org.greenrobot.eventbus.EventBus
  */
 
 
-abstract class BaseFragment<V, T : IBasePresenter<V>> : BaseRxFragment(), BaseView {
+abstract class BaseFragment<V:BaseView, T : IBasePresenter<V>> : BaseRxFragment(), BaseView {
 
     protected var mPresenter: T? = null
 

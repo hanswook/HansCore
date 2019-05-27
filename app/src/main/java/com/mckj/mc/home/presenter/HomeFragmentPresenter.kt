@@ -10,6 +10,12 @@ import com.mckj.tec_library.base.BasePresenter
  * @description
  */
 class HomeFragmentPresenter : BasePresenter<HomeFragmentContract.View>(), HomeFragmentContract.Presenter {
+    override fun one() {
+
+    }
+
+    override fun two() {
+    }
 
 
 }

@@ -9,6 +9,17 @@ import com.mckj.tec_library.base.BasePresenter
  * @description
  */
 class HomepagePresenter : BasePresenter<HomepageContract.View>(), HomepageContract.Presenter {
+    override fun one() {
+        println("one")
+    }
+
+    override fun two() {
+        println("two")
+    }
+
+    override fun three() {
+        println("three")
+    }
 
 
 }
