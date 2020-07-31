@@ -3,7 +3,6 @@ package com.mckj.mc
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.mckj.mc.home.HomepageActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +13,6 @@ class MainActivity : AppCompatActivity() {
 
 
     fun goHome(view: View) {
-        HomepageActivity.goToPage(this)
     }
 
 

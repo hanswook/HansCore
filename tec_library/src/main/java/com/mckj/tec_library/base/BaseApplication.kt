@@ -7,7 +7,6 @@ import com.mckj.tec_library.utils.logger.CustomLogCatStrategy
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
-import com.squareup.leakcanary.LeakCanary
 
 /**
  * @author Hans
@@ -23,7 +22,6 @@ abstract class BaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        initLeakCanary()
         initLogger()
         SPUtil.getInstance().init(this)
     }
@@ -44,16 +42,6 @@ abstract class BaseApplication : Application() {
         }
     }
 
-    private fun initLeakCanary() {
-        if (!isDebug()) {
-            return
-        }
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-            return
-        }
-    }
 
 
 }
