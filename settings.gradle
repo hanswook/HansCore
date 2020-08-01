@@ -1,2 +1,2 @@
-include ':app', ':tec_library'
+include ':app'
 include ':xlib'

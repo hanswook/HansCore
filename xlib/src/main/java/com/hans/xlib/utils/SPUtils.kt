@@ -6,8 +6,7 @@ import android.content.SharedPreferences
 /**
  *
  * @date:     2020/7/31 10:37 AM
- * @author: hanxu
- * @email hxxx1992@163.com
+ * @author: drq
  * @description null
  */
 object SPUtils {
