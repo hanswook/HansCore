@@ -7,8 +7,8 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.mckj.mc"
-        minSdkVersion 16
+        applicationId "com.hans.core.demo"
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -29,6 +29,9 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+    kotlinOptions{
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -42,4 +45,8 @@ dependencies {
 
 
     implementation project(":xlib")
+
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
+
+    implementation "androidx.activity:activity-ktx:1.1.0"
 }

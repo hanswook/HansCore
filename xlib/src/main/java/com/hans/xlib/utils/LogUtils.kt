@@ -29,57 +29,28 @@ object LogUtils {
         Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
     }
 
-    fun d(`object`: Any?) {
-        if (logEnable) {
-            Logger.d(`object`)
-        }
-    }
-
-    fun d(tag: String?, `object`: Any?) {
-        if (logEnable) {
-            Logger.d(`object`)
-        }
-    }
-
-    fun e(tag: String?, message: String?) {
-        if (logEnable) {
-            Logger.e(message!!, "")
-        }
-    }
-
-    fun json(tag: String?, jsonData: String?) {
-        if (logEnable) {
-            Logger.json(jsonData)
-        }
-    }
-
-    fun xml(tag: String?, xmlData: String?) {
-        if (logEnable) {
-            Logger.xml(xmlData)
-        }
-    }
 
     fun d(msg: String?) {
         if (logEnable) {
-            Logger.d(msg)
+            Logger.d(StringUtils.trimToEmpty(msg))
         }
     }
 
     fun v(msg: String?) {
         if (logEnable) {
-            Logger.v(msg!!)
+            Logger.v(StringUtils.trimToEmpty(msg))
         }
     }
 
     fun i(msg: String?) {
         if (logEnable) {
-            Logger.i(msg!!)
+            Logger.i(StringUtils.trimToEmpty(msg))
         }
     }
 
     fun e(msg: String?) {
         if (logEnable) {
-            Logger.e(msg!!)
+            Logger.e(StringUtils.trimToEmpty(msg))
         }
     }
 
@@ -94,7 +65,7 @@ object LogUtils {
 
     fun w(msg: String?) {
         if (logEnable) {
-            Logger.w(msg!!)
+            Logger.w(StringUtils.trimToEmpty(msg))
         }
     }
 

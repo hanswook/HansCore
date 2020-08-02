@@ -1,6 +1,7 @@
 package com.mckj.mc.base
 
 import android.app.Application
+import com.hans.xlib.utils.UtilsInitiator
 
 
 /**
@@ -17,5 +18,6 @@ class McApplication : Application() {
     }
 
     fun initDependecy() {
+        UtilsInitiator.toastInit(this)
     }
 }
